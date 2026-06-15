@@ -30,17 +30,17 @@ homologado como **placa nua / módulo plugável**, para ser integrado em
 
 ---
 
-## 3. Itens em aberto — valores recomendados pré-preenchidos
+## 3. Decisões confirmadas (valores recomendados aceitos)
 
-> Já deixamos a coluna **Decisão SBR** com o valor **recomendado**. A SBR só
-> precisa **confirmar** (manter) ou **alterar** cada linha.
+> Valores recomendados **confirmados**. Resta apenas o dado cadastral (item C),
+> que só a SBR possui — será obtido por e-mail.
 
-| # | Item | Decisão SBR (recomendada) | Confirmar / alterar |
+| # | Item | Decisão | Status |
 |---|---|---|---|
-| A | **Potência máx. de série (LoRa)** | **20 dBm** (100 mW — teto do chip e valor usual) | [ ] confirmo  [ ] altero p/ ____ |
-| B | **Antena** | modelo **original** do kit Heltec — **~2–3 dBi**, conector **u.FL/IPEX** *(medir/confirmar na peça física)* | [ ] confirmo  [ ] altero p/ ____ |
-| C | **Nome do fabricante** na homologação | **razão social completa da SBR** *(preencher: ____________ / CNPJ ____________)* | [ ] confirmo  [ ] altero |
-| D | **WiFi/BLE ativos** no produto final? | **Manter ativos** e ensaiar os 3 (o hardware transmite de qualquer forma) | [ ] confirmo  [ ] altero |
+| A | **Potência máx. de série (LoRa)** | **20 dBm** (100 mW — teto do chip e valor usual) | ✅ confirmado |
+| B | **Antena** | modelo **original** do kit Heltec — **~2–3 dBi**, conector **u.FL/IPEX** *(confirmar ganho exato na peça)* | ✅ confirmado |
+| C | **Nome do fabricante** na homologação | **razão social/CNPJ da SBR** *(preencher: ____________)* | ⏳ aguarda dado SBR |
+| D | **WiFi/BLE ativos** no produto final? | **Ativos** — ensaiar os 3 rádios | ✅ confirmado |
 
 > **Por que a potência importa:** o ensaio é feito na **potência máxima real** de
 > série. Definir agora evita reensaio. 20 dBm é o teto do chip e o usual.
@@ -63,18 +63,12 @@ homologado como **placa nua / módulo plugável**, para ser integrado em
 
 ---
 
-## 5. Aprovação SBR (portão do Ato 1)
+## 5. Status do portão do Ato 1
 
-> Ao aprovar, a SBR autoriza seguir para a consulta ao OCD/lab.
+- [x] Definições técnicas (Seções 2 e 3) **confirmadas internamente**.
+- [ ] **Razão social/CNPJ da SBR** (item C) — a obter por e-mail com a SBR.
 
-- Itens em aberto (Seção 3) preenchidos? **[ ] Sim**
-- Definições (Seção 2) conferidas? **[ ] Sim**
+> Único item pendente é cadastral (não bloqueia o Ato 2 em paralelo). Resumo
+> enviado à SBR por e-mail — ver [`EMAIL_RESUMO_SBR.md`](EMAIL_RESUMO_SBR.md).
 
-| Campo | Valor |
-|---|---|
-| Aprovado por (nome) | __________________________ |
-| Cargo / área | __________________________ |
-| Data | _____ / _____ / __________ |
-| Observações | __________________________ |
-
-**→ Aprovado: seguir para o [Ato 2 — Perguntas ao OCD](ATO2_PERGUNTAS_OCD.md).**
+**→ Liberado para o [Ato 2 — Perguntas ao OCD](ATO2_PERGUNTAS_OCD.md).**

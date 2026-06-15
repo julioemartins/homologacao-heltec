@@ -19,8 +19,8 @@
 | Forma de homologação | **Placa nua (módulo plugável)** — será integrada em produtos host da SBR |
 | Rádios | LoRa 900 MHz (SX1276) + WiFi 2,4 GHz + BLE 2,4 GHz (1 homologação cobrindo os 3) |
 | Plano de frequência LoRa | **915–928 MHz (AU915)** — apenas esta sub-faixa; 902–907,5 não será declarada |
-| Potência LoRa | até +20 dBm (limite do chip) — *valor de série a confirmar* |
-| Antena | modelo **original** do kit Heltec (ganho/conector a especificar) |
+| Potência LoRa | **20 dBm** (100 mW) de série |
+| Antena | modelo **original** do kit Heltec (~2–3 dBi, u.FL/IPEX) |
 | Firmware de série | travado em 915–928 MHz |
 | Firmwares de teste | LoRa (CW/MOD por serial) **pronto** + RF Test ESP32 (WiFi/BLE) **já baixado** |
 | Titular | SBR (fabricante/importador declarado) |

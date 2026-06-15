@@ -29,11 +29,12 @@ o lab. Nada vai para fora sem este aceite.
 - **Documento:** [`ATO1_DEFINICAO_PRODUTO.md`](ATO1_DEFINICAO_PRODUTO.md) — ficha
   com tudo já definido + os poucos itens em aberto (ex.: **potência de série**).
 - **Ações:**
-  - [ ] Revisar a ficha de definição do produto.
-  - [ ] Fechar o item pendente: **potência máxima de série** (rec. 20 dBm).
-  - [ ] Confirmar **antena** (modelo original — ganho/conector).
-  - [ ] Confirmar **nome do fabricante** que constará na homologação.
-- **🚪 PORTÃO 1:** SBR **assina/aprova** a ficha. → libera o Ato 2.
+  - [x] Potência de série: **20 dBm**.
+  - [x] Antena: **modelo original** do kit (~2–3 dBi, u.FL/IPEX).
+  - [x] WiFi/BLE **ativos** (3 rádios no escopo).
+  - [ ] **Razão social/CNPJ da SBR** — obter por e-mail (ver `EMAIL_RESUMO_SBR.md`).
+- **🚪 PORTÃO 1:** definições técnicas confirmadas. Falta só o dado cadastral
+  (não bloqueia o Ato 2). → liberado.
 
 ---
 

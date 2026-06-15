@@ -4,7 +4,7 @@
 > Titular: SBR (fabricante/importador). OCD/laboratorio: ja contratado.
 > **Confirmar TODOS os pontos marcados [OCD] com o seu Organismo de Certificacao.**
 >
-> **Decisoes fechadas (SBR):** modelo = **SBR-Edge** · chip = SX1276 (V2) · plano de frequencia = **915–928 MHz** · firmware de serie travado em 915–928 · antena = modelo original do kit · homologar placa nua como modulo plugavel · case = decisao do produto host (premissa do time SBR, fora desta homologacao).
+> **Decisoes fechadas (SBR):** modelo = **SBR-Edge** · chip = SX1276 (V2) · plano de frequencia = **915–928 MHz** · potencia de serie = **20 dBm** · antena = modelo original do kit (~2–3 dBi, u.FL/IPEX) · WiFi/BLE ativos · firmware de serie travado em 915–928 · homologar placa nua como modulo plugavel · case = decisao do produto host (premissa do time SBR, fora desta homologacao).
 
 ---
 
@@ -20,7 +20,7 @@
 | Potencia LoRa max | +20 dBm (100 mW) conduzido — limite do proprio chip |
 | WiFi | 2,4 GHz (2400–2483,5), ~+20 dBm |
 | BLE | 2,4 GHz, ~+9 dBm |
-| Antena | **modelo original** do kit Heltec (especificar ganho/conector) |
+| Antena | **modelo original** do kit Heltec (~2–3 dBi, u.FL/IPEX — confirmar ganho na peca) |
 
 **Travar no firmware de SERIE:** operacao SOMENTE em **915–928 MHz**.
 Bloquear o restante do range que o hardware alcanca (863–915 e fora de 928) e que nao foi declarado.

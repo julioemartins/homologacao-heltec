@@ -9,7 +9,9 @@
 > - **Chip LoRa confirmado: SX1276** (placa V2, verificado por foto). O firmware de teste em `firmware/lora-sx1276/` serve.
 > - **Plano de frequência: 915–928 MHz (AU915)** — única sub-faixa declarada.
 > - **Firmware de série será travado** em **915–928 MHz** (decisão fechada).
-> - **Antena: modelo original** do kit Heltec (ganho/conector a especificar).
+> - **Potência LoRa de série: 20 dBm** (100 mW).
+> - **Antena: modelo original** do kit Heltec (~2–3 dBi, u.FL/IPEX — confirmar ganho na peça).
+> - **WiFi e BLE ativos** — os 3 rádios entram no escopo.
 > - **Homologar a placa nua como módulo plugável** (sem case), pois ela será integrada em outras placas da SBR.
 > - **Case:** não se aplica ao módulo; eventual case do produto host é **premissa para o time da SBR decidir** caso-a-caso.
 >
@@ -42,10 +44,10 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 | Rádio LoRa | Semtech **SX1276** — confirmado (placa V2, verificado por foto) |
 | Faixa do hardware LoRa | 863–928 MHz |
 | **Faixa LoRa declarada à Anatel** | **915–928 MHz** (AU915) — única sub-faixa declarada |
-| Potência LoRa máx. | +20 dBm (100 mW) conduzido — limite do chip |
+| Potência LoRa de série | **20 dBm** (100 mW) conduzido — teto do chip |
 | WiFi | 2,4 GHz (2400–2483,5 MHz), ~+20 dBm |
 | BLE | 2,4 GHz, ~+9 dBm |
-| Antena | **modelo original** do kit Heltec *(especificar ganho/conector exatos)* **[SBR]** |
+| Antena | **modelo original** do kit Heltec — ~2–3 dBi, u.FL/IPEX *(confirmar ganho na peça)* |
 | Alimentação | USB 5 V + bateria Li-Po (gestão de carga embarcada) |
 | Display | OLED 0,96" 128×64 (não-RF, irrelevante p/ ensaio de rádio) |
 
@@ -108,8 +110,8 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 - [x] **[SBR]** Firmware de série será **travado** nas sub-faixas brasileiras.
 - [x] **[SBR]** Modelo comercial definido: **SBR-Edge** (confirmar nome do fabricante que constará na homologação).
 - [x] **[SBR]** Plano de frequência definido: **915–928 MHz (AU915)**.
-- [ ] **[SBR]** Definir a **potência máxima** de operação do produto de série (recomendado: 20 dBm).
-- [ ] **[SBR]** Decidir se WiFi e BLE ficam **ativos** no produto final (recomendado ensaiar os três de qualquer forma, pois o hardware transmite).
+- [x] **[SBR]** Potência máxima de série definida: **20 dBm**.
+- [x] **[SBR]** WiFi e BLE **ativos** — os três rádios serão ensaiados.
 - [ ] **[OCD]** Confirmar **categoria** do produto e a **lista exata de ensaios** (RF; EMC; segurança elétrica; exposição a campos EM).
 - [ ] **[OCD]** Confirmar os **Atos de procedimento de ensaio** vigentes para LoRa, WiFi e BLE.
 - [ ] **[OCD]** Confirmar viabilidade e **condições da homologação como módulo plugável** reaproveitável em produtos host (front-end de RF + antena inalterados, rotulagem no host). **← ponto-chave deste projeto**
@@ -360,7 +362,7 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 - [x] **[SBR]** RF Test ESP32 **baixado** (`firmware/esp32-rf-test/`) — falta **testar/gravar**
 - [x] **[SBR]** Caminho definido: placa nua (módulo plugável) — sem case
 - [ ] **[SBR]** Posição da etiqueta/selo na placa definida
-- [ ] **[SBR]** Antena especificada (ganho/conector) — usar **modelo original** do kit
+- [x] **[SBR]** Antena: **modelo original** do kit (~2–3 dBi, u.FL/IPEX) — confirmar ganho exato na peça
 - [ ] **[SBR]** Amostras montadas (qtde confirmada pelo OCD)
 - [ ] **[SBR]** Documentação técnica reunida (Seção 6)
 - [ ] **[SBR]** Roteiro de ensaio anexado

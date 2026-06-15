@@ -77,7 +77,7 @@ entra em modo de teste e transmite** onde deve.
 | BLE | DTM TX (potência) | 0 / 19 / 39 = 2402 / 2440 / 2480 MHz |
 
 Taxas WiFi: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — conforme o lab.
-Sempre na **potência máxima** definida no Ato 1.
+Sempre na **potência máxima de série (20 dBm)** definida no Ato 1.
 
 ---
 

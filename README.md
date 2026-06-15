@@ -11,8 +11,9 @@ pela **SBR** como **módulo plugável** integrado em outras placas/produtos host
 | Modelo comercial | **SBR-Edge** |
 | Chip LoRa | **SX1276** (placa **V2**, confirmado por foto) |
 | Plano de frequência LoRa | **915–928 MHz** (AU915) |
-| Potência | máx. do produto de série (a definir/confirmar) |
-| Antena | **modelo original** do kit Heltec *(ganho/conector a especificar)* |
+| Potência LoRa de série | **20 dBm** (100 mW) |
+| Antena | **modelo original** do kit Heltec (~2–3 dBi, u.FL/IPEX) |
+| WiFi / BLE | **ativos** — os 3 rádios entram no escopo |
 | Firmware de série | **travado** em 915–928 MHz (sub-faixa BR) |
 | Configuração a homologar | **placa nua** (módulo plugável, sem case) |
 | Case | decisão do produto host — fora do escopo desta homologação |
@@ -42,7 +43,7 @@ quando o portão do anterior é aprovado.
 
 | Ato | O quê | Documento | Estado |
 |---|---|---|---|
-| **1** | Confirmar o produto (interno SBR) | [`docs/ATO1_DEFINICAO_PRODUTO.md`](docs/ATO1_DEFINICAO_PRODUTO.md) | ⏳ aguarda aprovação SBR |
+| **1** | Confirmar o produto (interno SBR) | [`docs/ATO1_DEFINICAO_PRODUTO.md`](docs/ATO1_DEFINICAO_PRODUTO.md) | ✅ confirmado (falta razão social) |
 | **2** | Consultar OCD/lab (escopo + custo) | [`docs/ATO2_PERGUNTAS_OCD.md`](docs/ATO2_PERGUNTAS_OCD.md) | pronto p/ enviar |
 | **3** | Amostras + teste de bancada | [`docs/ATO3_AMOSTRAS_E_ROTEIRO.md`](docs/ATO3_AMOSTRAS_E_ROTEIRO.md) | — |
 | **4** | Despachar + acompanhar | [`docs/PROCESSO.md`](docs/PROCESSO.md) (Ato 4) | — |
@@ -56,6 +57,6 @@ quando o portão do anterior é aprovado.
 
 ## Próxima ação
 
-**Ato 1** — a SBR revisa e aprova a [ficha de definição do produto](docs/ATO1_DEFINICAO_PRODUTO.md),
-fechando o único item técnico em aberto (**potência máxima de série**, rec. 20 dBm)
-e a **antena** (modelo original — ganho/conector). Só então segue para o Ato 2.
+Definições técnicas **confirmadas** (Ato 1). Pendências:
+- **SBR:** informar **razão social/CNPJ** (resumo enviado por e-mail — ver [`docs/EMAIL_RESUMO_SBR.md`](docs/EMAIL_RESUMO_SBR.md)).
+- **Em paralelo:** enviar o [Ato 2 — perguntas ao OCD/lab](docs/ATO2_PERGUNTAS_OCD.md).
