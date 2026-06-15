@@ -35,17 +35,27 @@ pela **SBR** como **módulo plugável** integrado em outras placas/produtos host
         └── docs/                             (manuais PDF da Espressif)
 ```
 
-## Por onde começar
+## O processo, em 4 atos
 
-- **Visão geral e fases:** [`docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md`](docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md)
+Plano de comando: **[`docs/PROCESSO.md`](docs/PROCESSO.md)** — cada ato só começa
+quando o portão do anterior é aprovado.
+
+| Ato | O quê | Documento | Estado |
+|---|---|---|---|
+| **1** | Confirmar o produto (interno SBR) | [`docs/ATO1_DEFINICAO_PRODUTO.md`](docs/ATO1_DEFINICAO_PRODUTO.md) | ⏳ aguarda aprovação SBR |
+| **2** | Consultar OCD/lab (escopo + custo) | [`docs/ATO2_PERGUNTAS_OCD.md`](docs/ATO2_PERGUNTAS_OCD.md) | pronto p/ enviar |
+| **3** | Amostras + teste de bancada | [`docs/ATO3_AMOSTRAS_E_ROTEIRO.md`](docs/ATO3_AMOSTRAS_E_ROTEIRO.md) | — |
+| **4** | Despachar + acompanhar | [`docs/PROCESSO.md`](docs/PROCESSO.md) (Ato 4) | — |
+
+## Referência técnica
+
+- **Guia mestre (8 fases):** [`docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md`](docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md)
 - **Resumo rápido:** [`docs/PLANO_HOMOLOGACAO.md`](docs/PLANO_HOMOLOGACAO.md)
-- **Perguntas ao OCD/lab:** [`docs/PERGUNTAS_OCD.md`](docs/PERGUNTAS_OCD.md)
 - **Firmware LoRa (teste):** [`firmware/lora-sx1276/`](firmware/lora-sx1276/)
 - **Firmware WiFi/BLE (RF Test ESP32):** [`firmware/esp32-rf-test/`](firmware/esp32-rf-test/)
 
-## Pendências [SBR]
+## Próxima ação
 
-- [ ] Confirmar **potência máxima** de série e **antena** (modelo/ganho/conector).
-- [ ] Enviar **[perguntas ao OCD](docs/PERGUNTAS_OCD.md)** — destaque: viabilidade do
-      regime de **módulo plugável** reaproveitável.
-- [ ] Reunir documentação técnica (Seção 6 do guia) e roteiro de ensaio.
+**Ato 1** — a SBR revisa e aprova a [ficha de definição do produto](docs/ATO1_DEFINICAO_PRODUTO.md),
+fechando o único item técnico em aberto (**potência máxima de série**, rec. 20 dBm)
+e a **antena** (modelo original — ganho/conector). Só então segue para o Ato 2.
