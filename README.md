@@ -39,12 +39,13 @@ pela **SBR** como **módulo plugável** integrado em outras placas/produtos host
 
 - **Visão geral e fases:** [`docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md`](docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md)
 - **Resumo rápido:** [`docs/PLANO_HOMOLOGACAO.md`](docs/PLANO_HOMOLOGACAO.md)
+- **Perguntas ao OCD/lab:** [`docs/PERGUNTAS_OCD.md`](docs/PERGUNTAS_OCD.md)
 - **Firmware LoRa (teste):** [`firmware/lora-sx1276/`](firmware/lora-sx1276/)
 - **Firmware WiFi/BLE (RF Test ESP32):** [`firmware/esp32-rf-test/`](firmware/esp32-rf-test/)
 
 ## Pendências [SBR]
 
 - [ ] Confirmar **potência máxima** de série e **antena** (modelo/ganho/conector).
-- [ ] Enviar **perguntas ao OCD** (Seção 10 do guia) — destaque: viabilidade do
+- [ ] Enviar **[perguntas ao OCD](docs/PERGUNTAS_OCD.md)** — destaque: viabilidade do
       regime de **módulo plugável** reaproveitável.
 - [ ] Reunir documentação técnica (Seção 6 do guia) e roteiro de ensaio.
