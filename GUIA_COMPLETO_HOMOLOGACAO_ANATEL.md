@@ -1,8 +1,14 @@
 # Guia Completo — Homologação Anatel do Heltec WiFi LoRa 32 (V2)
 
-> **Produto:** módulo Heltec WiFi LoRa 32 V2 (ESP32 + SX1276 + WiFi + BLE), montado em case, homologado como **produto acabado** / módulo plugável.
+> **Produto:** módulo Heltec WiFi LoRa 32 **V2** (ESP32 + **SX1276** + WiFi + BLE), homologado como **módulo plugável (placa nua)** — será plugado em outras placas/produtos host da SBR.
 > **Titular:** SBR (fabricante/importador — responsável legal perante a Anatel).
 > **Laboratório/OCD:** já contratado.
+>
+> **Decisões já tomadas (SBR):**
+> - **Chip LoRa confirmado: SX1276** (placa V2, verificado por foto). O firmware de teste deste diretório serve.
+> - **Firmware de série será travado** em 902–907,5 / 915–928 MHz (decisão fechada).
+> - **Homologar a placa nua como módulo plugável** (sem case), pois ela será integrada em outras placas da SBR.
+> - **Case:** não se aplica ao módulo; eventual case do produto host é **premissa para o time da SBR decidir** caso-a-caso.
 >
 > **Como usar:** este é o documento mestre. Itens marcados **[OCD]** dependem de confirmação do seu Organismo de Certificação Designado — ele é a autoridade final sobre escopo de ensaios, categoria e formato de etiqueta. Itens **[SBR]** são ações suas.
 
@@ -11,8 +17,9 @@
 ## 1. Objetivo e estratégia
 
 Tornar o módulo Heltec **legalmente comercializável no Brasil**, com **número de homologação Anatel**, de forma que ele possa ser:
-- vendido/usado dentro de um **case próprio**, e
-- (objetivo secundário) **reaproveitado como módulo** em produtos host futuros, sem reensaiar tudo — desde que o front-end de RF e a antena não mudem **[OCD]**.
+- **reaproveitado como módulo plugável** em produtos host da SBR (objetivo principal), sem reensaiar tudo a cada produto — desde que o front-end de RF e a antena não mudem **[OCD]**.
+
+> **Caminho escolhido:** homologa-se a **placa nua** (com headers), não um produto com case. O case é decisão do produto host, à parte desta homologação.
 
 São **3 rádios numa única placa**, todos sob o regime de **radiação restrita** da Anatel:
 1. **LoRa 900 MHz** (SX1276)
@@ -29,7 +36,7 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 |---|---|
 | Modelo comercial | *(definir nome/modelo SBR)* **[SBR]** |
 | MCU | ESP32 (dual-core, WiFi 2,4 GHz + BLE) |
-| Rádio LoRa | Semtech **SX1276** — *confirmar olhando o chip (V3 usa SX1262)* **[SBR]** |
+| Rádio LoRa | Semtech **SX1276** — confirmado (placa V2, verificado por foto) |
 | Faixa do hardware LoRa | 863–928 MHz |
 | **Faixa LoRa declarada à Anatel** | **902–907,5 MHz** e **915–928 MHz** (apenas sub-faixas permitidas) |
 | Potência LoRa máx. | +20 dBm (100 mW) conduzido — limite do chip |
@@ -52,6 +59,8 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 | **Ato nº 14448/2017** (e atualizações) | Requisitos técnicos de ensaio para equipamentos de radiação restrita (limites de potência/EIRP, emissões, sub-faixas). |
 | **Atos de procedimento de ensaio** (LoRa/Wi-Fi/BLE) | Procedimentos específicos por tecnologia. O OCD indica os Atos vigentes. **[OCD]** |
 
+> **Atenção (módulo plugável):** como vamos homologar a placa como módulo a ser integrado em produtos host da SBR, confirme com o OCD as **condições do regime de módulo** — tipicamente: manter o **front-end de RF e a antena inalterados**, **rotulagem** do nº de homologação visível também no produto host, e eventual menção do módulo no manual do host. Isso é o que evita reensaiar a cada novo produto. **[OCD]**
+
 **Categoria do produto:** equipamentos transmissores de radiação restrita costumam ser **Categoria 1 ou 2** (exigem ensaios + certificação por OCD, não apenas declaração). **Confirmar a categoria exata com o OCD [OCD]** — ela define a profundidade dos ensaios (RF, e possivelmente EMC, segurança elétrica, exposição EM).
 
 ---
@@ -73,7 +82,7 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 |---|---|---|---|
 | 1 | Enquadramento | categoria + escopo de ensaios definidos | SBR + OCD |
 | 2 | Preparação técnica | firmwares de teste prontos (LoRa + WiFi/BLE) | SBR |
-| 3 | Case + etiqueta | produto na configuração final, etiquetável | SBR |
+| 3 | Placa + etiqueta | placa nua na config final + posição do selo | SBR |
 | 4 | Amostras | 2–3 unidades iguais entregues ao lab | SBR |
 | 5 | Ensaios | relatórios de ensaio | Laboratório |
 | 6 | Certificação | Certificado de Conformidade | OCD |
@@ -81,7 +90,7 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 | 8 | Pós-homologação | rotulagem, manutenção, importação | SBR |
 
 ```
-[1 Enquadramento] -> [2 Firmware] -> [3 Case/Etiqueta] -> [4 Amostras]
+[1 Enquadramento] -> [2 Firmware] -> [3 Placa/Etiqueta] -> [4 Amostras]
         -> [5 Ensaios] -> [6 Certificado OCD] -> [7 Homologacao Anatel] -> [8 Pos]
 ```
 
@@ -91,13 +100,16 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 
 **Objetivo:** travar exatamente o que será ensaiado antes de gastar com laboratório.
 
+- [x] **[SBR]** Chip LoRa confirmado: **SX1276** (placa V2).
+- [x] **[SBR]** Caminho de homologação definido: **módulo plugável (placa nua)**, sem case.
+- [x] **[SBR]** Firmware de série será **travado** nas sub-faixas brasileiras.
 - [ ] **[SBR]** Definir o **modelo comercial** e o **nome do fabricante** que constará na homologação.
 - [ ] **[SBR]** Definir o **plano de frequência** do produto: 915–928 (AU915), 902–907,5, ou ambos.
 - [ ] **[SBR]** Definir a **potência máxima** de operação do produto de série (recomendado: 20 dBm).
 - [ ] **[SBR]** Decidir se WiFi e BLE ficam **ativos** no produto final (recomendado ensaiar os três de qualquer forma, pois o hardware transmite).
 - [ ] **[OCD]** Confirmar **categoria** do produto e a **lista exata de ensaios** (RF; EMC; segurança elétrica; exposição a campos EM).
 - [ ] **[OCD]** Confirmar os **Atos de procedimento de ensaio** vigentes para LoRa, WiFi e BLE.
-- [ ] **[OCD]** Confirmar viabilidade de **homologação como módulo reaproveitável** e suas condições.
+- [ ] **[OCD]** Confirmar viabilidade e **condições da homologação como módulo plugável** reaproveitável em produtos host (front-end de RF + antena inalterados, rotulagem no host). **← ponto-chave deste projeto**
 
 ---
 
@@ -112,7 +124,7 @@ Arquivo: **`heltec_v2_sx1276_anatel_testmode.ino`** (neste diretório).
 - Comandos: `F<MHz>` (frequência), `P<dBm>` (potência), `CW`, `MOD`, `STOP`, `?`.
 - Avisa se sair das sub-faixas brasileiras.
 
-> Se a placa for **V3 (SX1262)**, este firmware não serve — solicitar a versão SX1262.
+> Placa confirmada como **V2 (SX1276)** — este firmware é o correto.
 
 ### 2.2 WiFi 2,4 GHz e BLE — RF Test da Espressif
 
@@ -185,45 +197,38 @@ Após gravar, conectar por **serial a 115200 baud** (Monitor Serial, ou a própr
 
 ---
 
-## FASE 3 — Do kit ao produto: case (se houver) e etiqueta
+## FASE 3 — Placa na configuração final e etiqueta
 
-O produto é homologado **na configuração física exata em que será vendido**. Mudanças relevantes de RF (antena, circuito, potência) depois **invalidam** a homologação.
+O módulo é homologado **na configuração física exata em que será integrado**. Mudanças relevantes de RF (antena, circuito, potência) depois **invalidam** a homologação.
 
-### 3.0 Do kit de desenvolvimento ao produto homologável
+### 3.0 Configuração do módulo a homologar (decisão: placa nua)
 
-**O case pode NÃO ser obrigatório.** A Anatel homologa o que você vende — então a decisão não é "qual case", é **"o que será comercializado?"**:
+**Caminho escolhido pela SBR: homologar a placa nua como módulo plugável** (com headers, sem case), pois ela será integrada em outras placas/produtos host da SBR.
 
-- Vender a **placa nua como módulo plugável** (como vem hoje, com headers) → homologa-se a **placa nua**. **Sem case.**
-- Vender **dentro de um case** → homologa-se **com o case definitivo**.
+> O case é **decisão do produto host** — premissa para o time da SBR avaliar caso-a-caso quando definir cada produto final. **Não faz parte desta homologação do módulo.**
 
-Ou seja, o "kit de teste" atual **pode ser o próprio produto homologado**, desde que seja assim que chega ao cliente. O case é escolha de produto, não exigência regulatória.
-
-**O que realmente muda do "kit como vem" para "produto homologável":**
+**O que precisa estar fechado na placa para homologar:**
 
 | # | Item | Ação | Físico? |
 |---|---|---|---|
-| 1 | **Antena** ⭐ | Fixar **UMA** antena (modelo, ganho dBi, conector). Ela passa a fazer parte do produto certificado. Ideal: **conector fixo/único**, para o usuário não trocar por antena de maior ganho e estourar o EIRP homologado. **[OCD]** confirma a exigência de conector. | **Sim** |
-| 2 | **Espaço para o selo** | Garantir superfície (placa ou case) para aplicar o **selo Anatel** de forma permanente e legível. | **Sim** |
-| 3 | **Firmware travado** | Travar operação só em **902–907,5 / 915–928 MHz** e na **potência máxima** declarada. | Não (SW) |
-| 4 | **Case** | Só se vender com case — então ele precisa ser o **final** (ver 3.1). | Depende |
+| 1 | **Antena** ⭐ | Fixar **UMA** antena (modelo, ganho dBi, conector). Ela passa a fazer parte do módulo certificado. Ideal: **conector fixo/único**, para não trocar por antena de maior ganho e estourar o EIRP homologado. **[OCD]** confirma a exigência de conector. | **Sim** |
+| 2 | **Espaço para o selo** | Garantir superfície na **placa** para aplicar o **selo Anatel** de forma permanente e legível (e replicá-lo/referenciá-lo no produto host). | **Sim** |
+| 3 | **Firmware travado** | Travar operação só em **902–907,5 / 915–928 MHz** e na **potência máxima** declarada (decisão fechada). | Não (SW) |
 
 **O que NÃO precisa mexer:**
 - Circuito de RF / chips → mantém como está.
 - Blindagem metálica → não exigida para esta classe (radiação restrita).
 - Headers/pinos → manter (é o que o torna "plugável").
 
-> **Resumo:** o item físico que você precisa fechar de fato é a **antena** (modelo + conector fixo) e o **espaço do selo**. O case é decisão comercial.
+> **Resumo:** o item físico a fechar de fato é a **antena** (modelo + conector fixo) e o **espaço do selo** na placa. Case fica fora do escopo.
 
-### 3.1 Requisitos do case (caso opte por vender com case)
-- [ ] **Configuração final:** ensaiar com o case definitivo (material, tampa, aberturas). Não ensaiar "placa nua" se o produto vende com case.
+### 3.1 Requisitos do módulo (placa) para ensaio
+- [ ] **Configuração final:** ensaiar a **placa nua** exatamente como será integrada (mesma antena, mesmos headers, mesmo firmware de série).
 - [ ] **Antena:** posição e tipo de antena **fixos**; usar a antena que irá ao mercado. Documentar **ganho e conector**. Conector "único/não padronizado" facilita o enquadramento de antena dedicada **[OCD]**.
-- [ ] **Material:** plástico (não blindado) é o caso típico do Heltec; se usar case metálico, isso muda a emissão e **precisa ser o mesmo do ensaio**.
-- [ ] **Espaço para a etiqueta:** superfície plana, visível e acessível para aplicar o **selo de homologação Anatel** de forma **permanente e legível** (ver 3.2).
-- [ ] **Acessos físicos:** aberturas para USB/carga, antena (SMA/uFL→SMA) e, se aplicável, botão/reset, sem comprometer a fixação.
-- [ ] **Térmica:** ventilação adequada para operação contínua na potência máxima.
-- [ ] **Bateria Li-Po:** se o case contém bateria, prever fixação segura e, dependendo da categoria, requisitos de **segurança** podem se aplicar **[OCD]**.
-- [ ] **Robustez mecânica:** alívio de tração no cabo da antena e na alimentação; fixação da placa.
-- [ ] **Para "módulo plugável":** o case/headers devem expor o conector mantendo o **front-end de RF e a antena inalterados** em relação ao ensaiado **[OCD]**.
+- [ ] **Espaço para a etiqueta:** superfície na placa, visível e acessível, para aplicar o **selo de homologação Anatel** de forma **permanente e legível** (ver 3.2).
+- [ ] **Robustez mecânica:** alívio de tração no cabo da antena; fixação adequada quando plugada no host.
+- [ ] **Condição de módulo plugável:** o produto host deve **manter o front-end de RF e a antena inalterados** em relação ao ensaiado, sob pena de reavaliação **[OCD]**.
+- [ ] **Bateria Li-Po:** se a placa do módulo integra gestão de carga/bateria, dependendo da categoria podem se aplicar requisitos de **segurança** **[OCD]**.
 
 ### 3.2 Requisitos de etiqueta / selo de homologação
 - [ ] Selo de homologação Anatel com o **número de homologação** no formato oficial.
@@ -237,7 +242,7 @@ Ou seja, o "kit de teste" atual **pode ser o próprio produto homologado**, desd
 ## FASE 4 — Amostras
 
 - [ ] **[OCD]** Confirmar **quantidade** de unidades (tipicamente **2 a 3** iguais).
-- [ ] Amostras **idênticas ao produto final**: mesmo case, mesma antena, mesmo firmware de série (além dos firmwares de teste).
+- [ ] Amostras **idênticas ao módulo a homologar**: mesma placa, mesma antena, mesmo firmware de série (além dos firmwares de teste).
 - [ ] Identificar cada amostra (nº de série).
 - [ ] Enviar junto: firmwares de teste + roteiro de ensaio (Seção 9) + ficha técnica.
 
@@ -271,7 +276,7 @@ Escopo conforme a categoria **[OCD]**. Tipicamente:
 - [ ] Anexar Certificado de Conformidade e documentação.
 - [ ] Pagar a **taxa de homologação** (GRU).
 - [ ] **Saída:** **número de homologação Anatel** publicado.
-- [ ] Aplicar o **selo definitivo** (com o número/QR) no case e na arte.
+- [ ] Aplicar o **selo definitivo** (com o número/QR) na placa e na arte.
 
 > Frequentemente o **OCD conduz** esta fase em nome do titular — confirmar quem submete **[OCD]**.
 
@@ -301,7 +306,7 @@ Escopo conforme a categoria **[OCD]**. Tipicamente:
 - [ ] **Datasheets:** SX1276 (Semtech) e ESP32 (Espressif).
 - [ ] **Diagrama de blocos de RF** (cadeia rádio → PA → antena).
 - [ ] **Especificação da antena:** modelo, ganho (dBi), faixa, conector.
-- [ ] **Fotos:** externas (case + etiqueta) e internas (placa, chips legíveis, antena).
+- [ ] **Fotos:** da placa (frente/verso, chips legíveis), da antena e da posição do selo/etiqueta.
 - [ ] **Lista de frequências e potências** declaradas (plano AU915 etc.).
 
 ### De ensaio / firmware
@@ -357,7 +362,8 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 - [ ] **[SBR]** Modelo, plano de frequência e potência definidos
 - [ ] **[SBR]** Firmware LoRa pronto ✔ (já neste diretório)
 - [ ] **[SBR]** RF Test ESP32 baixado e testado
-- [ ] **[SBR]** Case final + posição da etiqueta definidos
+- [x] **[SBR]** Caminho definido: placa nua (módulo plugável) — sem case
+- [ ] **[SBR]** Posição da etiqueta/selo na placa definida
 - [ ] **[SBR]** Antena especificada (ganho/conector)
 - [ ] **[SBR]** Amostras montadas (qtde confirmada pelo OCD)
 - [ ] **[SBR]** Documentação técnica reunida (Seção 6)
@@ -375,7 +381,7 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 |---|---|
 | Placa ser V3 (SX1262) e firmware não servir | Confirmar o chip antes de gastar com lab |
 | Hardware transmitir fora das faixas BR (863–902) | Travar firmware de série só em 902–907,5 / 915–928 |
-| Ensaiar placa nua e vender com case diferente | Ensaiar já no case final |
+| Host alterar front-end de RF/antena do módulo | Manter RF e antena inalterados; mudança = reavaliação [OCD] |
 | Trocar antena depois da homologação | Antena é parte do ensaio; mudança = reavaliação |
 | WiFi/BLE "esquecido" no escopo | Incluir os três rádios desde o início |
 | Selo/etiqueta fora do formato vigente (QR) | Confirmar arte atual com o OCD |

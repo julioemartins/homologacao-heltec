@@ -1,8 +1,10 @@
 # Plano de Homologacao Anatel — Heltec WiFi LoRa 32 (V2)
 
-> Produto: modulo Heltec WiFi LoRa 32 V2, em case, homologado como **produto acabado**.
+> Produto: modulo Heltec WiFi LoRa 32 **V2** (SX1276 confirmado), homologado como **modulo plugavel (placa nua)** — sera integrado em outras placas/produtos host da SBR.
 > Titular: SBR (fabricante/importador). OCD/laboratorio: ja contratado.
 > **Confirmar TODOS os pontos marcados [OCD] com o seu Organismo de Certificacao.**
+>
+> **Decisoes fechadas (SBR):** chip = SX1276 (V2) · firmware de serie travado nas sub-faixas BR · homologar placa nua como modulo plugavel · case = decisao do produto host (premissa do time SBR, fora desta homologacao).
 
 ---
 
@@ -11,7 +13,7 @@
 | Item | Valor |
 |---|---|
 | MCU | ESP32 (WiFi 2,4 GHz + BLE) |
-| Radio LoRa | Semtech **SX1276** (placa V2) — *confirmar SX1276 x SX1262 olhando o chip* |
+| Radio LoRa | Semtech **SX1276** (placa V2) — confirmado por foto |
 | Faixa do hardware | 863–928 MHz (largo) |
 | **Faixa declarada p/ Anatel** | **902–907,5 MHz** e **915–928 MHz** (somente sub-faixas permitidas) |
 | Potencia LoRa max | +20 dBm (100 mW) conduzido — limite do proprio chip |
@@ -29,7 +31,7 @@ Bloquear o restante do range 863–928 que o hardware alcanca mas a Anatel nao p
 - **1 modelo = 1 homologacao** cobrindo LoRa + WiFi + BLE (tudo na mesma placa).
 - **NAO** se manda uma amostra por radio.
 - Quantidade de unidades fisicas: **[OCD]** — tipicamente **2 a 3 unidades iguais**.
-- As amostras devem estar no **case final** (e' assim que sera homologado/vendido).
+- As amostras sao a **placa nua** na config final (mesma antena/headers/firmware de serie) — e' assim que o modulo sera homologado e integrado.
 
 ---
 
