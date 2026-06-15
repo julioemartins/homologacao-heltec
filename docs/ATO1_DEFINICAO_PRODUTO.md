@@ -30,17 +30,27 @@ homologado como **placa nua / módulo plugável**, para ser integrado em
 
 ---
 
-## 3. Itens em aberto — a SBR precisa decidir
+## 3. Itens em aberto — valores recomendados pré-preenchidos
 
-| # | Item | Opções / recomendação | Decisão SBR |
+> Já deixamos a coluna **Decisão SBR** com o valor **recomendado**. A SBR só
+> precisa **confirmar** (manter) ou **alterar** cada linha.
+
+| # | Item | Decisão SBR (recomendada) | Confirmar / alterar |
 |---|---|---|---|
-| A | **Potência máx. de série (LoRa)** | até +20 dBm (limite do chip). **Rec.: 20 dBm** | __________ |
-| B | **Antena** | modelo **original** do kit Heltec — informar **ganho (dBi)** e **conector** | __________ |
-| C | **Nome do fabricante** na homologação | razão social da SBR (qual exatamente?) | __________ |
-| D | **WiFi/BLE ativos** no produto final? | ensaiar os 3 de qualquer forma (hardware transmite). **Rec.: manter** | __________ |
+| A | **Potência máx. de série (LoRa)** | **20 dBm** (100 mW — teto do chip e valor usual) | [ ] confirmo  [ ] altero p/ ____ |
+| B | **Antena** | modelo **original** do kit Heltec — **~2–3 dBi**, conector **u.FL/IPEX** *(medir/confirmar na peça física)* | [ ] confirmo  [ ] altero p/ ____ |
+| C | **Nome do fabricante** na homologação | **razão social completa da SBR** *(preencher: ____________ / CNPJ ____________)* | [ ] confirmo  [ ] altero |
+| D | **WiFi/BLE ativos** no produto final? | **Manter ativos** e ensaiar os 3 (o hardware transmite de qualquer forma) | [ ] confirmo  [ ] altero |
 
 > **Por que a potência importa:** o ensaio é feito na **potência máxima real** de
 > série. Definir agora evita reensaio. 20 dBm é o teto do chip e o usual.
+>
+> **Sobre a antena (item B):** ganho/conector recomendados são os típicos do kit
+> Heltec V2; **confirme olhando a peça** (etiqueta/datasheet da antena) antes de
+> fechar — o ganho entra no cálculo de EIRP do ensaio.
+>
+> **Sobre o fabricante (item C):** só a SBR tem a razão social/CNPJ exatos — este
+> é o único campo que **precisa** ser digitado (não dá para recomendar).
 
 ---
 
