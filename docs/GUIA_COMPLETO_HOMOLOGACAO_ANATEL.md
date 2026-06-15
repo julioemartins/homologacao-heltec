@@ -5,8 +5,11 @@
 > **Laboratório/OCD:** já contratado.
 >
 > **Decisões já tomadas (SBR):**
-> - **Chip LoRa confirmado: SX1276** (placa V2, verificado por foto). O firmware de teste deste diretório serve.
-> - **Firmware de série será travado** em 902–907,5 / 915–928 MHz (decisão fechada).
+> - **Modelo comercial: SBR-Edge.**
+> - **Chip LoRa confirmado: SX1276** (placa V2, verificado por foto). O firmware de teste em `firmware/lora-sx1276/` serve.
+> - **Plano de frequência: 915–928 MHz (AU915)** — única sub-faixa declarada.
+> - **Firmware de série será travado** em **915–928 MHz** (decisão fechada).
+> - **Antena: modelo original** do kit Heltec (ganho/conector a especificar).
 > - **Homologar a placa nua como módulo plugável** (sem case), pois ela será integrada em outras placas da SBR.
 > - **Case:** não se aplica ao módulo; eventual case do produto host é **premissa para o time da SBR decidir** caso-a-caso.
 >
@@ -34,19 +37,19 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 
 | Item | Valor |
 |---|---|
-| Modelo comercial | *(definir nome/modelo SBR)* **[SBR]** |
+| Modelo comercial | **SBR-Edge** |
 | MCU | ESP32 (dual-core, WiFi 2,4 GHz + BLE) |
 | Rádio LoRa | Semtech **SX1276** — confirmado (placa V2, verificado por foto) |
 | Faixa do hardware LoRa | 863–928 MHz |
-| **Faixa LoRa declarada à Anatel** | **902–907,5 MHz** e **915–928 MHz** (apenas sub-faixas permitidas) |
+| **Faixa LoRa declarada à Anatel** | **915–928 MHz** (AU915) — única sub-faixa declarada |
 | Potência LoRa máx. | +20 dBm (100 mW) conduzido — limite do chip |
 | WiFi | 2,4 GHz (2400–2483,5 MHz), ~+20 dBm |
 | BLE | 2,4 GHz, ~+9 dBm |
-| Antena | externa, conectorizada, ~3 dBi *(especificar ganho/conector exatos)* **[SBR]** |
+| Antena | **modelo original** do kit Heltec *(especificar ganho/conector exatos)* **[SBR]** |
 | Alimentação | USB 5 V + bateria Li-Po (gestão de carga embarcada) |
 | Display | OLED 0,96" 128×64 (não-RF, irrelevante p/ ensaio de rádio) |
 
-**Regra crítica:** o produto de série deve operar **somente** em 902–907,5 e 915–928 MHz. O trecho 863–902 MHz que o hardware alcança **não é permitido no Brasil** e precisa estar **travado por firmware**.
+**Regra crítica:** o produto de série deve operar **somente** em **915–928 MHz**. Todo o restante que o hardware alcança (863–915 MHz e fora de 928 MHz) **não está declarado / não é permitido** e precisa estar **travado por firmware**.
 
 ---
 
@@ -103,8 +106,8 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 - [x] **[SBR]** Chip LoRa confirmado: **SX1276** (placa V2).
 - [x] **[SBR]** Caminho de homologação definido: **módulo plugável (placa nua)**, sem case.
 - [x] **[SBR]** Firmware de série será **travado** nas sub-faixas brasileiras.
-- [ ] **[SBR]** Definir o **modelo comercial** e o **nome do fabricante** que constará na homologação.
-- [ ] **[SBR]** Definir o **plano de frequência** do produto: 915–928 (AU915), 902–907,5, ou ambos.
+- [x] **[SBR]** Modelo comercial definido: **SBR-Edge** (confirmar nome do fabricante que constará na homologação).
+- [x] **[SBR]** Plano de frequência definido: **915–928 MHz (AU915)**.
 - [ ] **[SBR]** Definir a **potência máxima** de operação do produto de série (recomendado: 20 dBm).
 - [ ] **[SBR]** Decidir se WiFi e BLE ficam **ativos** no produto final (recomendado ensaiar os três de qualquer forma, pois o hardware transmite).
 - [ ] **[OCD]** Confirmar **categoria** do produto e a **lista exata de ensaios** (RF; EMC; segurança elétrica; exposição a campos EM).
@@ -118,7 +121,7 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 **Não existe firmware de homologação para baixar.** O laboratório precisa de firmwares que coloquem cada rádio em **modo de teste**.
 
 ### 2.1 LoRa (SX1276) — PRONTO
-Arquivo: **`heltec_v2_sx1276_anatel_testmode.ino`** (neste diretório).
+Arquivo: **`heltec_v2_sx1276_anatel_testmode.ino`** (em [`../firmware/lora-sx1276/`](../firmware/lora-sx1276/)).
 - Comandável por serial (115200 baud), sem recompilar.
 - Modos: **CW** (portadora contínua não modulada) e **MOD** (LoRa modulado contínuo).
 - Comandos: `F<MHz>` (frequência), `P<dBm>` (potência), `CW`, `MOD`, `STOP`, `?`.
@@ -132,36 +135,34 @@ Para o ESP32 (WiFi + BLE) **não se escreve firmware**: a Espressif fornece um *
 
 > **Importante:** o RF Test cobre **apenas** os rádios de 2,4 GHz (WiFi e BLE) do ESP32. O LoRa (900 MHz) usa o firmware da Seção 2.1. São firmwares **separados**, gravados na **mesma** amostra, um de cada vez.
 
-#### 2.2.1 O que baixar (Espressif)
-- [ ] **[SBR]** **Firmware de RF Test** para **ESP32** (chip clássico da placa V2). Vem como conjunto de binários: `bootloader.bin`, `partition-table.bin` e o `rf_test.bin` (app).
-- [ ] **[SBR]** **RF Test Tool** (ferramenta GUI de PC, Windows) — documento de referência: **"ESP RF Test Tool and Test Guide"** da Espressif.
-- [ ] **[SBR]** **Flash Download Tool** da Espressif (GUI de gravação) — opcional, alternativa ao `esptool`.
+#### 2.2.1 Firmware de RF Test (JÁ BAIXADO)
 
-> Os pacotes de RF Test/certificação da Espressif costumam ser distribuídos pelo canal de suporte/engenharia da Espressif. Se não achar o link, **peça ao seu laboratório** — eles quase sempre já têm o firmware e a ferramenta do ESP32. **[OCD/LAB]**
+Os binários oficiais da Espressif para o **ESP32** (chip da placa V2) já estão no
+repositório: [`../firmware/esp32-rf-test/`](../firmware/esp32-rf-test/). Ver o
+[README](../firmware/esp32-rf-test/README.md) de lá para detalhes de gravação/comandos.
+
+- [x] **[SBR]** **Firmware de RF Test** ESP32 — `ESP32_RFTest_V195_1807fd3_20250818.bin` (+ `ESP32_Init_data_bin_*.bin`).
+- [x] **[SBR]** **BLE DTM (HCI)** — `ESP32_BLE_DTM_HCI_*.bin` (+ `.txt`), para teste BLE por instrumento.
+- [x] **[SBR]** **Manuais** da EspRFTestTool (PDFs em `firmware/esp32-rf-test/docs/`).
+- [ ] **[SBR]** **EspRFTestTool / Flash Download Tool** (GUI Windows, ~52 MB) — **não versionada** no repo. Baixar de `https://dl.espressif.com/RF/EspRFTestTool_v5.2_Manual.zip`.
+
+> Origem dos binários: pacote `EspRFTestTool_v5.2_Manual.zip` da Espressif. Na prática, **o laboratório opera a ferramenta** — você entrega a placa já gravada. **[OCD/LAB]**
 
 #### 2.2.2 Gravar o firmware de RF Test na placa
 
-**Opção A — Flash Download Tool (GUI, mais simples):**
-1. Abrir o Flash Download Tool, escolher chip **ESP32**.
-2. Adicionar os três binários nos endereços padrão:
-   - `bootloader.bin` → **0x1000**
-   - `partition-table.bin` → **0x8000**
-   - `rf_test.bin` (app) → **0x10000**
-   *(use exatamente os endereços indicados no pacote da Espressif, se diferirem).*
-3. Selecionar a porta COM da placa, baud **921600**, e clicar **START**.
+> Binários em [`../firmware/esp32-rf-test/`](../firmware/esp32-rf-test/). Endereços de flash do RF Test ESP32: **app em `0x1000`** e **`phy_init`/init data em `0x1fc000`** (ver [README](../firmware/esp32-rf-test/README.md)).
 
-**Opção B — esptool (linha de comando):**
+**Opção A — esptool (linha de comando):**
 ```bash
 # Descobrir a porta (macOS): ls /dev/cu.*  -> algo como /dev/cu.usbserial-0001
-esptool.py --chip esp32 --port /dev/cu.usbserial-0001 --baud 921600 write_flash \
-  0x1000  bootloader.bin \
-  0x8000  partition-table.bin \
-  0x10000 rf_test.bin
+esptool.py --chip esp32 --port /dev/cu.usbserial-0001 --baud 921600 \
+  write_flash --flash_mode dio --flash_freq 40m --flash_size detect \
+  0x1000   ESP32_RFTest_V195_1807fd3_20250818.bin \
+  0x1fc000 ESP32_Init_data_bin_v06_20191016.bin
 ```
-Se o pacote vier como **imagem única combinada**, grave-a em `0x0`:
-```bash
-esptool.py --chip esp32 --port /dev/cu.usbserial-0001 --baud 921600 write_flash 0x0 rf_test_combined.bin
-```
+
+**Opção B — Flash Download Tool / EspRFTestTool (GUI Windows):** escolher chip
+**ESP32**, adicionar os dois binários nos endereços acima, porta COM, baud **921600**, **START**.
 
 > A placa Heltec V2 normalmente entra em modo de gravação sozinha (auto-reset). Se falhar, segurar **BOOT/PRG** ao iniciar o flash.
 
@@ -179,7 +180,7 @@ Após gravar, conectar por **serial a 115200 baud** (Monitor Serial, ou a própr
 - Modo de transmissão DTM em **canais baixo/meio/alto: 2402 / 2440 / 2480 MHz** (canais BLE 0, 19 e 39).
 - Potência máxima do produto.
 
-> **Sintaxe exata dos comandos:** os nomes (ex.: TX contínuo, single carrier, DTM start/stop) variam conforme a **versão do firmware de RF Test**. Use sempre a tabela de comandos do **"ESP RF Test Tool and Test Guide"** correspondente ao binário baixado. Na prática, **o laboratório opera a RF Test Tool** — você entrega a placa já gravada + a lista de canais/potência da Seção 9. **[OCD/LAB]**
+> **Sintaxe exata dos comandos:** os nomes (ex.: TX contínuo, single carrier, DTM start/stop) variam conforme a **versão do firmware de RF Test**. Use sempre a tabela de comandos do **"ESP RF Test Tool and Test Guide"** correspondente ao binário baixado. Na prática, **o laboratório opera a RF Test Tool** — você entrega a placa já gravada + a lista de canais/potência da Seção 7. **[OCD/LAB]**
 
 #### 2.2.4 Sequência de ensaio WiFi/BLE (resumo)
 1. Gravar o firmware de RF Test (2.2.2).
@@ -213,7 +214,7 @@ O módulo é homologado **na configuração física exata em que será integrado
 |---|---|---|---|
 | 1 | **Antena** ⭐ | Fixar **UMA** antena (modelo, ganho dBi, conector). Ela passa a fazer parte do módulo certificado. Ideal: **conector fixo/único**, para não trocar por antena de maior ganho e estourar o EIRP homologado. **[OCD]** confirma a exigência de conector. | **Sim** |
 | 2 | **Espaço para o selo** | Garantir superfície na **placa** para aplicar o **selo Anatel** de forma permanente e legível (e replicá-lo/referenciá-lo no produto host). | **Sim** |
-| 3 | **Firmware travado** | Travar operação só em **902–907,5 / 915–928 MHz** e na **potência máxima** declarada (decisão fechada). | Não (SW) |
+| 3 | **Firmware travado** | Travar operação só em **915–928 MHz** e na **potência máxima** declarada (decisão fechada). | Não (SW) |
 
 **O que NÃO precisa mexer:**
 - Circuito de RF / chips → mantém como está.
@@ -244,7 +245,7 @@ O módulo é homologado **na configuração física exata em que será integrado
 - [ ] **[OCD]** Confirmar **quantidade** de unidades (tipicamente **2 a 3** iguais).
 - [ ] Amostras **idênticas ao módulo a homologar**: mesma placa, mesma antena, mesmo firmware de série (além dos firmwares de teste).
 - [ ] Identificar cada amostra (nº de série).
-- [ ] Enviar junto: firmwares de teste + roteiro de ensaio (Seção 9) + ficha técnica.
+- [ ] Enviar junto: firmwares de teste + roteiro de ensaio (Seção 7) + ficha técnica.
 
 ---
 
@@ -311,7 +312,7 @@ Escopo conforme a categoria **[OCD]**. Tipicamente:
 
 ### De ensaio / firmware
 - [ ] Firmwares de teste (LoRa `.ino`/`.bin` + RF Test ESP32 `.bin`).
-- [ ] **Roteiro de ensaio** (Seção 9).
+- [ ] **Roteiro de ensaio** (Seção 7).
 
 ### De rotulagem
 - [ ] Arte do **selo/etiqueta** (com placeholder do número até a Fase 7).
@@ -322,9 +323,9 @@ Escopo conforme a categoria **[OCD]**. Tipicamente:
 
 ## 7. Roteiro de ensaio LoRa (entregar ao laboratório)
 
-Usar o firmware `heltec_v2_sx1276_anatel_testmode.ino`. Para **cada** sub-faixa, medir no canal **baixo, meio e alto**, em **CW** e depois em **MOD**, sempre na **potência máxima** (`P20`).
+Usar o firmware `heltec_v2_sx1276_anatel_testmode.ino` ([`../firmware/lora-sx1276/`](../firmware/lora-sx1276/)). Plano declarado: **somente 915–928 MHz**. Medir no canal **baixo, meio e alto**, em **CW** e depois em **MOD**, sempre na **potência máxima** (`P20`).
 
-### Sub-faixa 915–928 MHz (AU915)
+### Sub-faixa 915–928 MHz (AU915) — única declarada
 | Passo | Comando | Medição |
 |---|---|---|
 | Potência máx | `P20` | — |
@@ -336,12 +337,7 @@ Usar o firmware `heltec_v2_sx1276_anatel_testmode.ino`. Para **cada** sub-faixa,
 | Canal alto (MOD) | `F927.8` → `MOD` | potência, OBW, OOB |
 | Parar | `STOP` | — |
 
-### Sub-faixa 902–907,5 MHz (se declarada)
-| Passo | Comando |
-|---|---|
-| Canal baixo | `F902.2` → `CW` / `MOD` |
-| Canal meio | `F904.8` → `CW` / `MOD` |
-| Canal alto | `F907.3` → `CW` / `MOD` |
+> **Sub-faixa 902–907,5 MHz: NÃO declarada** (decisão SBR — fora do escopo deste ensaio). O firmware de série bloqueia essa faixa.
 
 ### WiFi/BLE (RF Test ESP32 — ver procedimento completo na Seção 2.2)
 Gravar primeiro o firmware de RF Test (Seção 2.2.2) e operar pela RF Test Tool.
@@ -359,12 +355,12 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 ## 8. Checklist mestre (visão única)
 
 - [ ] **[OCD]** Categoria e escopo de ensaios confirmados
-- [ ] **[SBR]** Modelo, plano de frequência e potência definidos
-- [ ] **[SBR]** Firmware LoRa pronto ✔ (já neste diretório)
-- [ ] **[SBR]** RF Test ESP32 baixado e testado
+- [x] **[SBR]** Modelo (**SBR-Edge**) e plano de frequência (**915–928**) definidos — falta **potência**
+- [x] **[SBR]** Firmware LoRa pronto ✔ (`firmware/lora-sx1276/`)
+- [x] **[SBR]** RF Test ESP32 **baixado** (`firmware/esp32-rf-test/`) — falta **testar/gravar**
 - [x] **[SBR]** Caminho definido: placa nua (módulo plugável) — sem case
 - [ ] **[SBR]** Posição da etiqueta/selo na placa definida
-- [ ] **[SBR]** Antena especificada (ganho/conector)
+- [ ] **[SBR]** Antena especificada (ganho/conector) — usar **modelo original** do kit
 - [ ] **[SBR]** Amostras montadas (qtde confirmada pelo OCD)
 - [ ] **[SBR]** Documentação técnica reunida (Seção 6)
 - [ ] **[SBR]** Roteiro de ensaio anexado
@@ -379,8 +375,7 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 
 | Risco | Mitigação |
 |---|---|
-| Placa ser V3 (SX1262) e firmware não servir | Confirmar o chip antes de gastar com lab |
-| Hardware transmitir fora das faixas BR (863–902) | Travar firmware de série só em 902–907,5 / 915–928 |
+| Hardware transmitir fora da faixa declarada (863–915 / >928) | Travar firmware de série **só em 915–928 MHz** |
 | Host alterar front-end de RF/antena do módulo | Manter RF e antena inalterados; mudança = reavaliação [OCD] |
 | Trocar antena depois da homologação | Antena é parte do ensaio; mudança = reavaliação |
 | WiFi/BLE "esquecido" no escopo | Incluir os três rádios desde o início |
@@ -402,6 +397,8 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 
 ---
 
-*Arquivos relacionados nesta pasta:*
-- `heltec_v2_sx1276_anatel_testmode.ino` — firmware de teste do rádio LoRa
-- `PLANO_HOMOLOGACAO.md` — resumo rápido (este guia é a versão detalhada)
+*Arquivos relacionados no repositório:*
+- [`../firmware/lora-sx1276/heltec_v2_sx1276_anatel_testmode.ino`](../firmware/lora-sx1276/heltec_v2_sx1276_anatel_testmode.ino) — firmware de teste do rádio LoRa
+- [`../firmware/esp32-rf-test/`](../firmware/esp32-rf-test/) — firmwares de RF Test do ESP32 (WiFi/BLE) + manuais
+- [`PLANO_HOMOLOGACAO.md`](PLANO_HOMOLOGACAO.md) — resumo rápido (este guia é a versão detalhada)
+- [`../README.md`](../README.md) — índice do repositório

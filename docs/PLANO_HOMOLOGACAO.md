@@ -4,7 +4,7 @@
 > Titular: SBR (fabricante/importador). OCD/laboratorio: ja contratado.
 > **Confirmar TODOS os pontos marcados [OCD] com o seu Organismo de Certificacao.**
 >
-> **Decisoes fechadas (SBR):** chip = SX1276 (V2) · firmware de serie travado nas sub-faixas BR · homologar placa nua como modulo plugavel · case = decisao do produto host (premissa do time SBR, fora desta homologacao).
+> **Decisoes fechadas (SBR):** modelo = **SBR-Edge** · chip = SX1276 (V2) · plano de frequencia = **915–928 MHz** · firmware de serie travado em 915–928 · antena = modelo original do kit · homologar placa nua como modulo plugavel · case = decisao do produto host (premissa do time SBR, fora desta homologacao).
 
 ---
 
@@ -12,17 +12,18 @@
 
 | Item | Valor |
 |---|---|
+| Modelo comercial | **SBR-Edge** |
 | MCU | ESP32 (WiFi 2,4 GHz + BLE) |
 | Radio LoRa | Semtech **SX1276** (placa V2) — confirmado por foto |
 | Faixa do hardware | 863–928 MHz (largo) |
-| **Faixa declarada p/ Anatel** | **902–907,5 MHz** e **915–928 MHz** (somente sub-faixas permitidas) |
+| **Faixa declarada p/ Anatel** | **915–928 MHz** (AU915) — unica sub-faixa declarada |
 | Potencia LoRa max | +20 dBm (100 mW) conduzido — limite do proprio chip |
 | WiFi | 2,4 GHz (2400–2483,5), ~+20 dBm |
 | BLE | 2,4 GHz, ~+9 dBm |
-| Antena | externa, ~3 dBi (especificar ganho/conector) |
+| Antena | **modelo original** do kit Heltec (especificar ganho/conector) |
 
-**Travar no firmware de SERIE:** operacao SOMENTE em 902–907,5 e 915–928 MHz.
-Bloquear o restante do range 863–928 que o hardware alcanca mas a Anatel nao permite.
+**Travar no firmware de SERIE:** operacao SOMENTE em **915–928 MHz**.
+Bloquear o restante do range que o hardware alcanca (863–915 e fora de 928) e que nao foi declarado.
 
 ---
 
@@ -39,12 +40,12 @@ Bloquear o restante do range 863–928 que o hardware alcanca mas a Anatel nao p
 
 | Radio | Firmware | Status |
 |---|---|---|
-| LoRa SX1276 | `heltec_v2_sx1276_anatel_testmode.ino` (CW / MOD, comandavel por serial) | **PRONTO neste diretorio** |
-| WiFi 2,4 GHz | "RF Test" da Espressif (binario + ferramenta de PC) | baixar da Espressif |
-| BLE | DTM (Direct Test Mode) — incluido no RF Test da Espressif | baixar da Espressif |
+| LoRa SX1276 | `heltec_v2_sx1276_anatel_testmode.ino` (CW / MOD, comandavel por serial) | **PRONTO** — `../firmware/lora-sx1276/` |
+| WiFi 2,4 GHz | "RF Test" da Espressif (`ESP32_RFTest_*.bin`) | **BAIXADO** — `../firmware/esp32-rf-test/` |
+| BLE | DTM — `ESP32_BLE_DTM_HCI_*.bin` (ou via RF Test) | **BAIXADO** — `../firmware/esp32-rf-test/` |
 
-Procedimento LoRa (repetir por sub-faixa, ver comentarios no .ino):
-`P20` -> `F<baixa>`/`CW` -> `F<meio>`/`CW` -> `F<alta>`/`CW` -> repetir com `MOD`.
+Procedimento LoRa (so a sub-faixa 915–928, ver comentarios no .ino):
+`P20` -> `F915.2`/`CW` -> `F921.5`/`CW` -> `F927.8`/`CW` -> repetir com `MOD`.
 
 ---
 

@@ -1,0 +1,62 @@
+ESP32_BLE_DTM_HCI_f8139fe_20250714.bin， For DTM/BLE Signaling Test, Optimized BLE RX 2480
+======================================================
+
+Download Bin and Address（烧录固件地址）
+ESP32_BLE_DTM_HCI_f8139fe_20250714.bin	0x1000
+-------------------------------------------------------------------------------
+
+
+Setup(按照下面 UART1 接线)
+-------------------------------------------
+ESP Launcher UART1 Connections （如果使用 ESP 串口板）:
+UART1 RX - GPIO5
+UART1 TX - GPIO4
+GND - GND
+------------------------------------------
+
+RS232 UART1 Connections （如果使用通用 TTL/RS232 串口板）:
+UART1 RX - GPIO4
+UART1 TX - GPIO5
+GND - GND
+-----------------------------------------
+BLE DTM auto init after power on the module, then you can start the DTM test. 
+上电以上述 GPIO 作为 UART1 测试管脚自动初始化完成，默认 BLE 功率 6dBm，暂不支持 UART1 参数调整
+
+CMW500 等仪器设置如下： 
+RF Test -- EUT Control
+HW Interface: USB to RS232 adapter
+EUT Comm Protocol: HCI
+Virtual COM Port: The comport of UART1(USB Cable Connect to CMW500)
+Baud Rate: 115200
+Protocol:	None
+Auto Ranging: Selected
+
+
+
+-------------------------------------------------------------------------------
+UART1 接 CMW500
+UART0 接 PC，上电查看打印log，输入 help 可查看当前可用测试指令：
+
+Power On Log（上电打印log）:
+..............................
+[0;32mI (974) phy_init: phy_version 4700,f8139fe,Jul 14 2025,10:09:07[0m
+PLL track enable
+BT BB INTR enabled!
+ACL Link Number[7], Mask other ACL Links
+Enable Classic BT
+Enable Low Energy
+
+
+SSC version : cert/bqb_rf_mas_20240308_bt_init(3dd39522)
+
+IDF version : cert/bqb_rf_mas_20240308(756d0f92)
+
+WIFI LIB version : cert/bqb_rf_mas_20240308(756d0f92)
+
+BT LIB version : cert/bqb_rf_mas_20240308(756d0f92)
+
+phy version : 4700,f8139fe,Jul 14 2025,10:09:07
+
+!!!ready!!!
+
+虽然打印 CTS 和 RTS，但 CMW500 上Protocol 只能设为  None ，开流控即使接上对应的 GPIO ，也异常，因此 UART1 建议只接 TX/RX/GND 即可。

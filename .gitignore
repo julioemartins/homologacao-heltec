@@ -1,0 +1,7 @@
+# Pacotes/ferramentas grandes da Espressif — baixar direto da fonte (ver
+# firmware/esp32-rf-test/README.md). Não versionar no repo.
+EspRFTestTool_*.zip
+*.exe
+
+# macOS
+.DS_Store
