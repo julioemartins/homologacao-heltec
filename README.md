@@ -27,7 +27,9 @@ pela **SBR** como **módulo plugável** integrado em outras placas/produtos host
 │   └── PLANO_HOMOLOGACAO.md                   (resumo rápido)
 └── firmware/                              # firmwares de teste p/ o laboratório
     ├── lora-sx1276/                          (rádio LoRa 900 MHz)
-    │   └── heltec_v2_sx1276_anatel_testmode.ino
+    │   ├── heltec_v2_sx1276_anatel_testmode/    (firmware de TESTE — CW/MOD)
+    │   ├── heltec_v2_sx1276_serie_915_928/      (firmware de SÉRIE — travado)
+    │   └── teste_bancada.py                     (valida o roteiro por serial)
     └── esp32-rf-test/                        (WiFi + BLE 2,4 GHz — Espressif)
         ├── README.md                         (como gravar/operar)
         ├── ESP32_RFTest_V195_*.bin           (firmware principal de RF Test)
@@ -48,11 +50,20 @@ quando o portão do anterior é aprovado.
 | **3** | Amostras + teste de bancada | [`docs/ATO3_AMOSTRAS_E_ROTEIRO.md`](docs/ATO3_AMOSTRAS_E_ROTEIRO.md) | — |
 | **4** | Despachar + acompanhar | [`docs/PROCESSO.md`](docs/PROCESSO.md) (Ato 4) | — |
 
+## Verificar na bancada (antes do lab)
+
+- **Roteiro de ensaio dos 3 rádios:** [`docs/ROTEIRO_HOMOLOGACAO.md`](docs/ROTEIRO_HOMOLOGACAO.md)
+- **Passo a passo LoRa:** [`docs/BANCADA_LORA.md`](docs/BANCADA_LORA.md)
+- **Passo a passo WiFi/BLE:** [`docs/BANCADA_WIFI_BLE.md`](docs/BANCADA_WIFI_BLE.md)
+
+> Ferramentas já instaladas nesta máquina: `arduino-cli` (core esp32 + RadioLib),
+> `esptool`, `pyserial`. Os dois firmwares LoRa **compilam sem erros**.
+
 ## Referência técnica
 
 - **Guia mestre (8 fases):** [`docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md`](docs/GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md)
 - **Resumo rápido:** [`docs/PLANO_HOMOLOGACAO.md`](docs/PLANO_HOMOLOGACAO.md)
-- **Firmware LoRa (teste):** [`firmware/lora-sx1276/`](firmware/lora-sx1276/)
+- **Firmwares LoRa (teste + série):** [`firmware/lora-sx1276/`](firmware/lora-sx1276/)
 - **Firmware WiFi/BLE (RF Test ESP32):** [`firmware/esp32-rf-test/`](firmware/esp32-rf-test/)
 
 ## Próxima ação

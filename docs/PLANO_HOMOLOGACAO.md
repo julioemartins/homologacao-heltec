@@ -40,7 +40,7 @@ Bloquear o restante do range que o hardware alcanca (863–915 e fora de 928) e 
 
 | Radio | Firmware | Status |
 |---|---|---|
-| LoRa SX1276 | `heltec_v2_sx1276_anatel_testmode.ino` (CW / MOD, comandavel por serial) | **PRONTO** — `../firmware/lora-sx1276/` |
+| LoRa SX1276 | `heltec_v2_sx1276_anatel_testmode/` (CW / MOD por serial) + serie travado 915–928 | **PRONTO** — `../firmware/lora-sx1276/` |
 | WiFi 2,4 GHz | "RF Test" da Espressif (`ESP32_RFTest_*.bin`) | **BAIXADO** — `../firmware/esp32-rf-test/` |
 | BLE | DTM — `ESP32_BLE_DTM_HCI_*.bin` (ou via RF Test) | **BAIXADO** — `../firmware/esp32-rf-test/` |
 

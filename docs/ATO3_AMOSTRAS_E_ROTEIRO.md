@@ -5,6 +5,10 @@
 > começa após o [Ato 2](ATO2_PERGUNTAS_OCD.md) (escopo/custo/amostras aceitos).
 >
 > Detalhe técnico completo: [`GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md`](GUIA_COMPLETO_HOMOLOGACAO_ANATEL.md), Fases 2–4 e Seção 7.
+>
+> **Passo a passo de bancada (seguir aqui):** [`BANCADA_LORA.md`](BANCADA_LORA.md) ·
+> [`BANCADA_WIFI_BLE.md`](BANCADA_WIFI_BLE.md). **Roteiro para o lab:**
+> [`ROTEIRO_HOMOLOGACAO.md`](ROTEIRO_HOMOLOGACAO.md).
 
 ---
 
@@ -21,7 +25,8 @@
 
 | Rádio | Arquivo | Pasta |
 |---|---|---|
-| LoRa SX1276 (teste) | `heltec_v2_sx1276_anatel_testmode.ino` | [`../firmware/lora-sx1276/`](../firmware/lora-sx1276/) |
+| LoRa SX1276 (teste) | `heltec_v2_sx1276_anatel_testmode/` | [`../firmware/lora-sx1276/`](../firmware/lora-sx1276/) |
+| LoRa SX1276 (série, travado 915–928) | `heltec_v2_sx1276_serie_915_928/` | [`../firmware/lora-sx1276/`](../firmware/lora-sx1276/) |
 | WiFi+BLE (RF Test) | `ESP32_RFTest_V195_*.bin` + `ESP32_Init_data_bin_*.bin` | [`../firmware/esp32-rf-test/`](../firmware/esp32-rf-test/) |
 | BLE DTM (HCI) | `ESP32_BLE_DTM_HCI_*.bin` | [`../firmware/esp32-rf-test/`](../firmware/esp32-rf-test/) |
 

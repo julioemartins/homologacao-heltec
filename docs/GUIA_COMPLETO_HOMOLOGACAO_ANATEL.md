@@ -123,7 +123,7 @@ São **3 rádios numa única placa**, todos sob o regime de **radiação restrit
 **Não existe firmware de homologação para baixar.** O laboratório precisa de firmwares que coloquem cada rádio em **modo de teste**.
 
 ### 2.1 LoRa (SX1276) — PRONTO
-Arquivo: **`heltec_v2_sx1276_anatel_testmode.ino`** (em [`../firmware/lora-sx1276/`](../firmware/lora-sx1276/)).
+Arquivo: **`heltec_v2_sx1276_anatel_testmode.ino`** (em [`../firmware/lora-sx1276/heltec_v2_sx1276_anatel_testmode/`](../firmware/lora-sx1276/heltec_v2_sx1276_anatel_testmode/)). Passo a passo de gravação/teste: [`BANCADA_LORA.md`](BANCADA_LORA.md).
 - Comandável por serial (115200 baud), sem recompilar.
 - Modos: **CW** (portadora contínua não modulada) e **MOD** (LoRa modulado contínuo).
 - Comandos: `F<MHz>` (frequência), `P<dBm>` (potência), `CW`, `MOD`, `STOP`, `?`.
@@ -325,7 +325,7 @@ Escopo conforme a categoria **[OCD]**. Tipicamente:
 
 ## 7. Roteiro de ensaio LoRa (entregar ao laboratório)
 
-Usar o firmware `heltec_v2_sx1276_anatel_testmode.ino` ([`../firmware/lora-sx1276/`](../firmware/lora-sx1276/)). Plano declarado: **somente 915–928 MHz**. Medir no canal **baixo, meio e alto**, em **CW** e depois em **MOD**, sempre na **potência máxima** (`P20`).
+Usar o firmware `heltec_v2_sx1276_anatel_testmode.ino` ([`../firmware/lora-sx1276/`](../firmware/lora-sx1276/)). Roteiro consolidado dos 3 rádios: [`ROTEIRO_HOMOLOGACAO.md`](ROTEIRO_HOMOLOGACAO.md). Plano declarado: **somente 915–928 MHz**. Medir no canal **baixo, meio e alto**, em **CW** e depois em **MOD**, sempre na **potência máxima** (`P20`).
 
 ### Sub-faixa 915–928 MHz (AU915) — única declarada
 | Passo | Comando | Medição |
@@ -400,7 +400,7 @@ Taxas WiFi representativas: 11b (1/11 Mbps), 11g (54 Mbps), 11n (MCS0/MCS7) — 
 ---
 
 *Arquivos relacionados no repositório:*
-- [`../firmware/lora-sx1276/heltec_v2_sx1276_anatel_testmode.ino`](../firmware/lora-sx1276/heltec_v2_sx1276_anatel_testmode.ino) — firmware de teste do rádio LoRa
+- [`../firmware/lora-sx1276/`](../firmware/lora-sx1276/) — firmwares LoRa (**teste** + **série travado 915–928**) e script de bancada
 - [`../firmware/esp32-rf-test/`](../firmware/esp32-rf-test/) — firmwares de RF Test do ESP32 (WiFi/BLE) + manuais
 - [`PLANO_HOMOLOGACAO.md`](PLANO_HOMOLOGACAO.md) — resumo rápido (este guia é a versão detalhada)
 - [`../README.md`](../README.md) — índice do repositório

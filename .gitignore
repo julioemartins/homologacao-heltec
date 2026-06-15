@@ -5,3 +5,8 @@ EspRFTestTool_*.zip
 
 # macOS
 .DS_Store
+
+# Python / build
+__pycache__/
+*.pyc
+build/
